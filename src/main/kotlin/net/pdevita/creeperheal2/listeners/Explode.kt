@@ -13,7 +13,7 @@ import org.bukkit.event.hanging.HangingBreakByEntityEvent
 import org.bukkit.event.hanging.HangingBreakEvent
 
 class Explode(var plugin: CreeperHeal2): Listener {
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.LOW)
     fun onEntityExplodeEvent(event: EntityExplodeEvent) {
 //        plugin.debugLogger("An entity explosion has happened! ${event.entityType.toString()}")
         if (plugin.settings.types.allowExplosionEntity(event.entityType)) {
@@ -23,7 +23,7 @@ class Explode(var plugin: CreeperHeal2): Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.LOW)
     fun onBlockExplodeEvent(event: BlockExplodeEvent) {
 //        plugin.debugLogger("A block explosion has happened! ${event.block.toString()}")
         if (plugin.settings.types.allowExplosionBlock(/*event.block.blockData.material*/)) {
