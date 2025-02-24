@@ -38,7 +38,6 @@ class Explode(var plugin: CreeperHeal2): Listener {
                     val set: ApplicableRegionSet = regions!!.getApplicableRegions(BlockVector3.at(loc.x, loc.y, loc.z))
 
                     if (!set.testState(null, Flags.OTHER_EXPLOSION)) {
-                        Bukkit.getServer().logger.warning("REMOVE")
                         event.blockList().remove(exploded)
                     }
                 }
