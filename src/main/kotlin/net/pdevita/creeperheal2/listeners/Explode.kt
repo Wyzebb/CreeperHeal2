@@ -1,6 +1,12 @@
 package net.pdevita.creeperheal2.listeners
 
+import com.sk89q.worldedit.bukkit.BukkitAdapter
+import com.sk89q.worldedit.math.BlockVector3
+import com.sk89q.worldguard.protection.ApplicableRegionSet
+import com.sk89q.worldguard.protection.flags.Flags
 import net.pdevita.creeperheal2.CreeperHeal2
+import org.bukkit.Bukkit
+import org.bukkit.Location
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Wither
@@ -14,12 +20,29 @@ import org.bukkit.event.entity.EntityExplodeEvent
 import org.bukkit.event.hanging.HangingBreakByEntityEvent
 import org.bukkit.event.hanging.HangingBreakEvent
 
+
 class Explode(var plugin: CreeperHeal2): Listener {
     @EventHandler(priority = EventPriority.LOW)
     fun onEntityExplodeEvent(event: EntityExplodeEvent) {
 //        plugin.debugLogger("An entity explosion has happened! ${event.entityType.toString()}")
         if (plugin.settings.types.allowExplosionEntity(event.entityType)) {
             if (event.location.world?.let { plugin.settings.worldList.allowWorld(it.name) } == true) {
+
+                val container = plugin.worldguard.platform.regionContainer
+
+                for (exploded in ArrayList(event.blockList())) {
+                    val regions = container.get(BukkitAdapter.adapt(exploded.world))
+
+                    val loc = Location(event.location.world, exploded.location.x, exploded.location.y, exploded.location.z)
+
+                    val set: ApplicableRegionSet = regions!!.getApplicableRegions(BlockVector3.at(loc.x, loc.y, loc.z))
+
+                    if (!set.testState(null, Flags.OTHER_EXPLOSION)) {
+                        Bukkit.getServer().logger.warning("REMOVE")
+                        event.blockList().remove(exploded)
+                    }
+                }
+
                 this.plugin.createNewExplosion(event.blockList())
             }
         }

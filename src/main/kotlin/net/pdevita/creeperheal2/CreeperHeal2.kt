@@ -1,5 +1,6 @@
 package net.pdevita.creeperheal2
 
+import com.sk89q.worldguard.WorldGuard
 import net.pdevita.creeperheal2.commands.Commands
 import net.pdevita.creeperheal2.compatibility.CompatibilityManager
 import net.pdevita.creeperheal2.config.ConfigManager
@@ -29,6 +30,7 @@ class CreeperHeal2 : JavaPlugin() {
     lateinit var settings: ConfigManager
     var stats: Stats? = null
     val compatibilityManager = CompatibilityManager(this)
+    val worldguard = WorldGuard.getInstance()
 
     companion object {
         lateinit var instance: CreeperHeal2
