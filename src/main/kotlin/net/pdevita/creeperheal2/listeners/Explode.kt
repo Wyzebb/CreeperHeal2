@@ -3,10 +3,12 @@ package net.pdevita.creeperheal2.listeners
 import net.pdevita.creeperheal2.CreeperHeal2
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Wither
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockExplodeEvent
+import org.bukkit.event.entity.EntityChangeBlockEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityExplodeEvent
 import org.bukkit.event.hanging.HangingBreakByEntityEvent
@@ -68,5 +70,17 @@ class Explode(var plugin: CreeperHeal2): Listener {
             }
         }
     }
+
+    @EventHandler(priority = EventPriority.LOW)
+    fun witherBreak(event: EntityChangeBlockEvent) {
+        if (event.entity is Wither) {
+            event.block.location.world?.name?.let { worldName ->
+                if (plugin.settings.worldList.allowWorld(worldName)) {
+                    this.plugin.createNewExplosion(listOf(event.block))
+                }
+            }
+        }
+    }
+
 }
 
