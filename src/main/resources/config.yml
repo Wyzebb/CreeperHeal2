@@ -17,6 +17,8 @@ types:
   end-crystal: false
   bed: false
   custom: false
+  wind-charge-explodes: false
+
 
 # Disable saving for container blocks (chests, shulker boxes, etc.)
 disable-containers: false
