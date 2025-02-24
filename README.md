@@ -1,3 +1,6 @@
+# This is the Wyzebb fix and feature port of the CreeperHeal2 plugin by pmdevita. All credit goes to them. Please view the commit history for a changelog.
+This is the second fork of this plugin I have made (first has been deleted) as the first became very messy and had unnecessary code changes. This new fork allows for easier PRs if the original developer would like to pull my changes upstream in the future.
+
 # CreeperHeal2 (v2.1.1) (1.13-1.20+)
 
 [Spigot Plugin Page](https://www.spigotmc.org/resources/creeperheal2.80585/) | [Dokka](https://pmdevita.github.io/CreeperHeal2/dokka) | [Javadocs](https://pmdevita.github.io/CreeperHeal2/javadoc)
