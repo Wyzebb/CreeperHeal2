@@ -54,6 +54,7 @@ class ExplosionTypes(config: FileConfiguration) {
     private val minecartTnt = config.getBoolean("types.minecart-tnt", false)
     private val bed = config.getBoolean("types.bed", false)
     private val customEntity = config.getBoolean("types.custom", false)
+    private val windChargeExplosions = config.getBoolean("types.wind-charge-explodes", false)
 
     fun allowExplosionEntity(entity: EntityType): Boolean {
         return when(entity) {
@@ -64,6 +65,7 @@ class ExplosionTypes(config: FileConfiguration) {
             EntityType.WITHER_SKULL -> wither
             EntityType.ENDER_CRYSTAL -> endCrystal
             EntityType.MINECART_TNT -> minecartTnt
+            EntityType.WIND_CHARGE -> windChargeExplosions
             else -> customEntity
         }
     }
