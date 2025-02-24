@@ -24,7 +24,7 @@ open class ConfigFile(private val plugin: CreeperHeal2, private val fileName: St
         if (!configFile.exists()) {
             plugin.saveResource(fileName, false)
         }
-        config = YamlConfiguration.loadConfiguration(configFile);
+        config = YamlConfiguration.loadConfiguration(configFile)
     }
 }
 

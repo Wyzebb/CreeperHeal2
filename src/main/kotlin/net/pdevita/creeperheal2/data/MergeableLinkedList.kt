@@ -5,9 +5,7 @@ class MergeableLinkedList<T>: MutableList<T> {
     internal var tail: MergeableLinkedListNode<T>? = null
     override var size = 0
 
-    constructor() {
-
-    }
+    constructor()
 
 //    constructor(size: Int) {
 //    }

@@ -136,9 +136,9 @@ class ExplosionManager(val plugin: CreeperHeal2) {
     fun isLocationInExplosion(loc: Location): Boolean {
         for (explosion in explosions) {
             if (explosion.boundary?.inBoundary(loc) == true) {
-                return true;
+                return true
             }
         }
-        return false;
+        return false
     }
 }

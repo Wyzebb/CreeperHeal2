@@ -330,7 +330,7 @@ private object Blocks16 : VersionBlocks {
         )
     }
 
-    override fun versionBlocks(): EnumMap<Material, FindDependentBlock>? {
+    override fun versionBlocks(): EnumMap<Material, FindDependentBlock> {
         return EnumMap<Material, FindDependentBlock>(mapOf(
             Material.valueOf("GRASS") to OnTopOf,
         ))
@@ -362,13 +362,13 @@ private object Blocks17 : VersionBlocks {
             )
         }
 
-    override fun versionTags(): Array<Pair<Tag<Material>, FindDependentBlock>>? {
+    override fun versionTags(): Array<Pair<Tag<Material>, FindDependentBlock>> {
         return arrayOf(
             Pair(Tag.CARPETS, OnTopOf),
         )
     }
 
-    override fun versionBlocks(): EnumMap<Material, FindDependentBlock>? {
+    override fun versionBlocks(): EnumMap<Material, FindDependentBlock> {
         return EnumMap<Material, FindDependentBlock>(mapOf(
             Material.valueOf("GRASS") to OnTopOf,
         ))
@@ -381,7 +381,7 @@ class Blocks17Proxy : VersionBlocks by Blocks17
 private object Blocks18 : VersionBlocks {
     override val version = 18
 
-    override fun versionBlocks(): EnumMap<Material, FindDependentBlock>? {
+    override fun versionBlocks(): EnumMap<Material, FindDependentBlock> {
         return EnumMap<Material, FindDependentBlock>(mapOf(
             Material.valueOf("GRASS") to OnTopOf,
         ))
@@ -409,7 +409,7 @@ private object Blocks19 : VersionBlocks {
             )
         }
 
-    override fun versionBlocks(): EnumMap<Material, FindDependentBlock>? {
+    override fun versionBlocks(): EnumMap<Material, FindDependentBlock> {
         return EnumMap<Material, FindDependentBlock>(mapOf(
             Material.valueOf("GRASS") to OnTopOf,
         ))

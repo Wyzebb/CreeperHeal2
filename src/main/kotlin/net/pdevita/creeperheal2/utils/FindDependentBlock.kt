@@ -52,13 +52,13 @@ object Behind : FindDependentBlockBase() {
 }
 
 object Below : FindDependentBlockBase() {
-    override fun getBlockFace(state: BlockState): BlockFace? {
+    override fun getBlockFace(state: BlockState): BlockFace {
         return BlockFace.UP
     }
 }
 
 object OnTopOf : FindDependentBlockBase() {
-    override fun getBlockFace(state: BlockState): BlockFace? {
+    override fun getBlockFace(state: BlockState): BlockFace {
         return BlockFace.DOWN
     }
 }
@@ -168,24 +168,24 @@ object Door : FindDependentBlocksBase() {
         return null
     }
 
-    override fun getParentFaces(state: BlockState): LinkedList<BlockFace>? {
+    override fun getParentFaces(state: BlockState): LinkedList<BlockFace> {
         return LinkedList(listOf(BlockFace.DOWN))
     }
 }
 
 object Bed : FindDependentBlocksBase() {
     override fun getDependentFaces(state: BlockState): LinkedList<BlockFace>? {
-        val bed = state.blockData as org.bukkit.block.data.type.Bed
-        if (bed.part == org.bukkit.block.data.type.Bed.Part.FOOT) {
+        val bed = state.blockData as Bed
+        if (bed.part == Bed.Part.FOOT) {
             return LinkedList(listOf(bed.facing))
-        } else if (bed.part == org.bukkit.block.data.type.Bed.Part.HEAD) {
+        } else if (bed.part == Bed.Part.HEAD) {
             return LinkedList(listOf(bed.facing.oppositeFace))
         }
         return null
     }
 
     override fun getParentFaces(state: BlockState): LinkedList<BlockFace>? {
-        val bed = state.blockData as org.bukkit.block.data.type.Bed
+        val bed = state.blockData as Bed
         if (bed.part == Bed.Part.FOOT) {
             return LinkedList(listOf(bed.facing))
         }
@@ -209,24 +209,24 @@ object SmallDripLeaf : FindDependentBlocksBase() {
 }
 
 object BigDripLeafStem : FindDependentBlocksBase() {
-    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace>? {
+    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace> {
         return LinkedList(listOf(BlockFace.DOWN, BlockFace.UP))
     }
 
-    override fun getParentFaces(state: BlockState): LinkedList<BlockFace>? {
+    override fun getParentFaces(state: BlockState): LinkedList<BlockFace> {
         return LinkedList(listOf(BlockFace.DOWN))
     }
 }
 
 object GlowLichen: FindDependentBlocksBase() {
-    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace>? {
+    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace> {
         val lichen = state.blockData as GlowLichen
         return LinkedList<BlockFace>(lichen.faces)
     }
 }
 
 object Vine : FindDependentBlocksBase() {
-    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace>? {
+    override fun getDependentFaces(state: BlockState): LinkedList<BlockFace> {
         val multipleFacing = state.blockData as MultipleFacing
         val faces = HashSet<BlockFace>()
 

@@ -138,7 +138,7 @@ class Boundary (var highX: Int, var highY: Int, var highZ: Int, var lowX: Int, v
     fun inBoundary(loc: Location): Boolean {
         return loc.blockX in lowX..highX &&
                 loc.blockY in lowY..highY &&
-                loc.blockZ in lowZ..highZ;
+                loc.blockZ in lowZ..highZ
     }
 
     override fun toString(): String {
