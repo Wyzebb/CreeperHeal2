@@ -7,6 +7,7 @@ softdepend:
   - Movecraft
   - Factions
   - Towny
+  - WorldGuard
 
 commands:
   creeperheal:
