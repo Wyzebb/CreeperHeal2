@@ -5,7 +5,6 @@ import com.sk89q.worldedit.math.BlockVector3
 import com.sk89q.worldguard.protection.ApplicableRegionSet
 import com.sk89q.worldguard.protection.flags.Flags
 import net.pdevita.creeperheal2.CreeperHeal2
-import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
