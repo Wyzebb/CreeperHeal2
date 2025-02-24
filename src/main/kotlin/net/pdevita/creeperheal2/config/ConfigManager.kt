@@ -8,7 +8,7 @@ import org.bukkit.entity.EntityType
 import java.io.File
 
 
-class ConfigManager(private val plugin: CreeperHeal2) {
+class ConfigManager(plugin: CreeperHeal2) {
     val general = General(plugin.config)
     val types = ExplosionTypes(plugin.config)
     private val worldListConfig = ConfigFile(plugin, "worlds.yml")
@@ -17,7 +17,7 @@ class ConfigManager(private val plugin: CreeperHeal2) {
     val blockList = BlockList(plugin, blockListConfig)
 }
 
-open class ConfigFile(private val plugin: CreeperHeal2, private val fileName: String) {
+open class ConfigFile(plugin: CreeperHeal2, fileName: String) {
     private val configFile = File(plugin.dataFolder, fileName)
     var config: YamlConfiguration
     init {

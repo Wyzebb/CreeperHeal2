@@ -11,7 +11,7 @@ import kotlin.math.ceil
 import kotlin.random.Random
 
 private object SideFaces {
-    val faces = ArrayList<BlockFace>(
+    val faces = ArrayList(
         listOf(
             BlockFace.UP,
             BlockFace.DOWN,
@@ -126,7 +126,7 @@ open class ExplodedBlock(protected var explosion: Explosion, val state: BlockSta
 
                 // If an entity has a Y equal to or greater than the placing block, we should probably teleport up
                 // If there is enough space below this block, we can leave the entity there
-                // println("bruh wtf ${entity.location.y >= state.location.y} ${hasValidSpaceBelow(state.location, entity)}")
+
                 if (entity.location.y >= state.location.y || !hasValidSpaceBelow(state.location, entity)) {
                     val oneBlockUp = currentBlock.getRelative(BlockFace.UP).location.clone()
                     oneBlockUp.direction = entity.location.direction
@@ -193,21 +193,19 @@ open class SideExplodedBlock(explosion: Explosion, state: BlockState): ExplodedB
 class GravityExplodedBlock(explosion: Explosion, state: BlockState): SideExplodedBlock(explosion, state) {
     override fun getParentBlockLocation(): Location {
         val newLocation = state.location.clone()
-        newLocation.y = newLocation.y - 1
+        newLocation.y -= 1
         return newLocation
     }
 }
 
 class MultiParentExplodedBlock(explosion: Explosion, state: BlockState) : ExplodedBlock(explosion, state) {
-    val parents = HashSet<ExplodedBlock>()
+    private val parents = HashSet<ExplodedBlock>()
 
-    fun getDependentBlocksLocation(): List<Location>? {
-//        println("multiblock has dependents ${explosion.plugin.constants.multiBlocks.blocks[state.blockData.material]?.getDependents(state)}")
-
+    private fun getDependentBlocksLocation(): List<Location>? {
         return explosion.plugin.constants.multiBlocks.blocks[state.blockData.material]?.getDependents(state)
     }
 
-    fun getParentBlocksLocation(): List<Location>? {
+    private fun getParentBlocksLocation(): List<Location>? {
         return explosion.plugin.constants.multiBlocks.blocks[state.blockData.material]?.getParents(state)
     }
 
@@ -227,7 +225,7 @@ class MultiParentExplodedBlock(explosion: Explosion, state: BlockState) : Explod
 
     override fun parentInExplosion(checkGravity: Boolean): Boolean {
         val parentLocations = getParentBlocksLocation()
-//        println("hiya, parentlocations for multiblock $parentLocations")
+
         // Block is in explosion locations and not in gravityBlocks (if checkGravity is enabled)
         if (parentLocations != null) {
             for (parentLocation in parentLocations) {
