@@ -4,8 +4,10 @@ import com.sk89q.worldedit.bukkit.BukkitAdapter
 import com.sk89q.worldedit.math.BlockVector3
 import com.sk89q.worldguard.protection.ApplicableRegionSet
 import com.sk89q.worldguard.protection.flags.Flags
+import me.deecaad.weaponmechanics.weapon.weaponevents.ProjectileExplodeEvent
 import net.pdevita.creeperheal2.CreeperHeal2
 import org.bukkit.Location
+import org.bukkit.block.Block
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Wither
@@ -54,6 +56,20 @@ class Explode(var plugin: CreeperHeal2): Listener {
                 this.plugin.createNewExplosion(event.blockList())
             }
         }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onWeaponMechanicsExplodeEvent(event: ProjectileExplodeEvent) {
+        val allowedBlocks = ArrayList<Block>()
+        if (plugin.settings.types.allowExplosionBlock(/*event.block.blockData.material*/)) {
+            for (block in event.blocks) {
+                if (block.location.world?.let { plugin.settings.worldList.allowWorld(it.name) } == true) {
+                    allowedBlocks.add(block)
+                }
+            }
+        }
+
+        this.plugin.createNewExplosion(allowedBlocks)
     }
 
     @EventHandler()
