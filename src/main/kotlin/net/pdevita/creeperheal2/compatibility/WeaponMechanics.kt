@@ -7,6 +7,7 @@ import net.pdevita.creeperheal2.CreeperHeal2
 import org.bukkit.block.Block
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.plugin.Plugin
 
 @AutoService(BaseCompatibility::class)
@@ -36,5 +37,14 @@ class WeaponMechanics : BaseCompatibility {
         }
 
         creeperHeal2.createNewExplosion(allowedBlocks)
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onWeaponMechanicsBreakBlockEvent(event: BlockBreakEvent) {
+        if (event.eventName == "WeaponMechanicsBlockDamage") {
+            if (event.block.location.world?.let { creeperHeal2.settings.worldList.allowWorld(it.name) } == true) {
+                creeperHeal2.createNewExplosion(listOf(event.block))
+            }
+        }
     }
 }
