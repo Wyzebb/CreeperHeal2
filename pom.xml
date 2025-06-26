@@ -24,6 +24,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
+            <id>jeff-media-public</id>
+            <url>https://repo.jeff-media.com/public/</url>
+        </repository>
+        <repository>
             <id>movecraft-github</id>
             <name>GitHub APDevTeam/Movecraft Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/APDevTeam/Movecraft</url>
@@ -116,6 +120,18 @@
             <artifactId>weaponmechanics</artifactId>
             <version>4.1.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cjcrafter</groupId>
+            <artifactId>mechanicscore</artifactId>
+            <version>4.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media</groupId>
+            <artifactId>SpigotUpdateChecker</artifactId>
+            <version>3.0.4</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
