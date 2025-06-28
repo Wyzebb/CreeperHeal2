@@ -7,10 +7,15 @@ softdepend:
   - Movecraft
   - Factions
   - Towny
-  - WeaponMechanics
   - WorldGuard
+
+depend:
+  - WeaponMechanics
 
 commands:
   creeperheal:
     description: CreeperHeal2 commands
     usage: /creeperheal <command>
+
+loadbefore:
+  - WeaponMechanics
