@@ -40,6 +40,7 @@ class General(config: FileConfiguration) {
     val turboCap = config.getInt("turbo-cap", 10).coerceAtMost(1000)
     val entityType = config.getBoolean("entity-type", true)
     val disableContainers = config.getBoolean("disable-containers", false)
+    val dropBlacklisted = config.getBoolean("always-drop-blacklisted-items", false)
 }
 
 class ExplosionTypes(config: FileConfiguration) {
