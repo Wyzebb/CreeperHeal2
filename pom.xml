@@ -47,10 +47,6 @@
             <id>jeff-media-public</id>
             <url>https://repo.jeff-media.com/public/</url>
         </repository>
-        <repository>
-            <id>tcoded-releases</id>
-            <url>https://repo.tcoded.com/releases</url>
-        </repository>
     </repositories>
     <dependencies>
         <dependency>
