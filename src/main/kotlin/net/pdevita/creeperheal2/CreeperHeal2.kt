@@ -9,8 +9,10 @@ import net.pdevita.creeperheal2.core.ExplosionManager
 import net.pdevita.creeperheal2.core.Gravity
 import net.pdevita.creeperheal2.listeners.Explode
 import net.pdevita.creeperheal2.utils.Stats
+import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.entity.Entity
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.util.*
@@ -68,7 +70,19 @@ class CreeperHeal2 : JavaPlugin() {
             return null
         }
 
-        val newBlockList = LinkedList(blockList.filter { settings.blockList.allowMaterial(it.type) })
+        val newBlockList = LinkedList<Block>()
+        for (block in blockList) {
+            if (settings.blockList.allowMaterial(block.type)) {
+                if (block.type != Material.BEDROCK && block.type != Material.AIR && block.type != Material.WATER) {
+                    newBlockList.add(block)
+                }
+            } else {
+                if (settings.general.dropBlacklisted) {
+                    block.breakNaturally()
+                    block.world.dropItemNaturally(block.location, ItemStack(block.type))
+                }
+            }
+        }
 
         if (newBlockList.isEmpty()) {
             return null
