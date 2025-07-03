@@ -24,6 +24,8 @@ disable-containers: false
 # Support entity-type blocks (Paintings, Item Frames, Armor Stands)
 entity-type: true
 
+always-drop-blacklisted-items: false
+
 # Turbo Mode
 # Turbo Mode can help repair larger explosions faster.
 # The minimum number of blocks an explosion should involve before turbo mode is activated
