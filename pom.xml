@@ -43,6 +43,10 @@
             <name>FactionsUUID repo</name>
             <url>https://ci.ender.zone/plugin/repository/everything/</url>
         </repository>
+        <repository>
+            <id>jeff-media-public</id>
+            <url>https://repo.jeff-media.com/public/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -99,6 +103,18 @@
             <groupId>com.palmergames.bukkit.towny</groupId>
             <artifactId>towny</artifactId>
             <version>0.100.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cjcrafter</groupId>
+            <artifactId>weaponmechanics</artifactId>
+            <version>4.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cjcrafter</groupId>
+            <artifactId>mechanicscore</artifactId>
+            <version>4.1.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
